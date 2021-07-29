@@ -17,12 +17,23 @@
 '''
 
 def palindrome(words):
-    for i in range(int(len(words))):
+    for i in range(int(len(words)/2)):
         if words[i] != words[-i-1]:
             return 0
-    return 1
+
     
 
 try_num = int(input())
 for i in range(try_num):
     print( f'#{i+1} {palindrome( input() )}' )
+
+
+# # 재귀함수
+# def palindrome(words):
+#     if len(words) < 2:
+#         return 1
+
+#     if words[0] == words[-1]:
+#         return palindrome( words[1:-1] )
+#     else:
+#         return 0

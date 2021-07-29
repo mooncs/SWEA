@@ -20,15 +20,16 @@ N은 10이상 1,000이하의 정수이다. (10 ≤ N ≤ 1,000)
 [출력]
 1 2 - 4 5 - 7 8 - 10
 '''
+from itertools import count
+
+
 N = int(input())
 result = ''
 
 for i in range(1, N+1):
     cnt = 0
     if '3' in str(i) or '6' in str(i) or '9' in str(i):
-        cnt += str(i).count('3')
-        cnt += str(i).count('6')
-        cnt += str(i).count('9')
+        cnt += str(i).count('3') + str(i).count('6') + str(i).count('9')
         result += ('-'*cnt+' ')
 
     else:
@@ -36,3 +37,38 @@ for i in range(1, N+1):
 
 print(result[:-1])
 
+
+# # 2
+# N = int(input())                        # 몇 번 돌아갈지 입력받기
+# arr = [str(i) for i in range (1, N+1)]  # 1~N까지 숫자를 리스트에 담기
+# lst = ['3', '6', '9']                   # 체크해야할 3, 6, 9 리스트에 담기
+# answer = []
+# for num in arr:
+#   cnt = 0                               # 3, 6, 9가 몇 개 들어가는지 개수 세기
+#   for n in num:                         # 두 자리 이상일 경우 하나 하나 판단
+#     if n in lst:
+#       cnt += 1
+#   if cnt != 0:                          # 3, 6, 9가 1개 이상 들어가면, 들어간만큼 숫자를 추가
+#     answer.append(cnt)
+#   else:                                 # 아닐경우 원래 숫자 추가
+#     answer.append(num)
+
+# for i in answer:
+#   if type(i) == str:                    # 문자열인 경우 원래 숫자기 때문에 그대로 출력
+#     print(i, end=' ')
+#   else:                                 # 숫자일 경우 3, 6, 9가 포함된 것이기 때문에 포함된 수 만큼 -출력
+#     print('-'*i, end=' ')
+
+
+# # 3
+# N = int(input())
+# answer = []
+# for i in range(1, N+1):
+#   num = str(i)
+#   if '3' in num or '6' in num or '9' in num:
+#     answer.append( '-' * (num.count('3') + num.count('6') + num.count('9')) )
+#   else:
+#     answer.append(i)
+
+# for a in answer:
+#   print(a, sep=' ')
