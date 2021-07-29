@@ -64,6 +64,7 @@ for i in range(1, n+1):
 
     else:
         if md_match[int(m)] < int(d) or int(d) < 1:
+        # if md_match.get(int(m)) < int(d) or int(d) < 1:
             print(f'#{i} -1')
         else:
             print(f'#{i} ' + y + '/' + m + '/' + d)
