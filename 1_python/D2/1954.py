@@ -100,5 +100,3 @@ for tc in range(T):
     print(f'#{tc+1}')
     for num in snail_num:
         print(" ".join(map(str, num)), end='\n')
-
-
