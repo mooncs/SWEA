@@ -67,11 +67,12 @@ N 과 M은 3 이상 20 이하이다.
 
 # 2
 T = int(input())
- 
+# 입력한 테스트 케이스만큼 실행
 for tc in range(1, T+1):
     N, M = map(int, input().split())
     first = list(map(int, input().split()))
     second = list(map(int, input().split()))
+    # M이 클 때를 가정하여 코드 작성하였기 때문에, N이 크다면 변수들을 swap
     if N > M:
         first, second = second, first
         N, M = M, N
@@ -80,8 +81,10 @@ for tc in range(1, T+1):
     max_sum = float('-inf')
     for i in range(M-N + 1):
         result = 0
+        # 두 수의 곱을 result에 더하고
         for j in range(N):
             result += first[j] * second[i + j]
+        # result가 max_sum보다 크다면, max_sum 갱신
         if result > max_sum:
             max_sum = result
  

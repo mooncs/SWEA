@@ -81,23 +81,8 @@ N은 3 이상 7 이하이다.
 #             print(result[r], end=' ')
 #         print()
 
-# # 2 아직 이해 불가...
-# T = int(input())
- 
-# for tc in range(T):
-#     res = list()
-#     arr = [list(input().split()) for _ in range(int(input()))]
-#     res.append([''.join(reversed(i)) for i in zip(*arr)])
-#     res.append([''.join(reversed(i)) for i in reversed(arr)])
-#     res.append([''.join(i) for i in reversed(list(zip(*arr)))])
-#     res = list(zip(*res))
-#     print(f'#{tc+1}')
-#     for i in res:
-#         for j in i:
-#             print(j, end = ' ')
-#         print()
 
-# 3
+# 2
 # 회전 함수 선언
 def rotate(origin):
     N = len(origin)
@@ -133,3 +118,20 @@ for tc in range(1, T+1):
         print(*r3[i], sep = '', end=' ')
         print(*r4[i], sep = '', end=' ')
         print()
+
+
+# # 3 아직 이해 불가...
+# T = int(input())
+ 
+# for tc in range(T):
+#     res = list()
+#     arr = [list(input().split()) for _ in range(int(input()))]
+#     res.append([''.join(reversed(i)) for i in zip(*arr)])
+#     res.append([''.join(reversed(i)) for i in reversed(arr)])
+#     res.append([''.join(i) for i in reversed(list(zip(*arr)))])
+#     res = list(zip(*res))
+#     print(f'#{tc+1}')
+#     for i in res:
+#         for j in i:
+#             print(j, end = ' ')
+#         print()

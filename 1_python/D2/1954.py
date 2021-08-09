@@ -45,7 +45,7 @@ N이 4일 경우,
 10 9 8 7
 '''
 T = int(input())
-for test in range(T):
+for tc in range(T):
     snail = int(input())
     snail_num = [[0]*snail for i in range(snail)]
     
@@ -97,7 +97,7 @@ for test in range(T):
             move -= 1
             # print(snail_num)
 
-    print(f'#{test+1}')
+    print(f'#{tc+1}')
     for num in snail_num:
         print(" ".join(map(str, num)), end='\n')
 

@@ -71,4 +71,3 @@ for ts in range(1, 11):
     build = int(input())
     datas = list( map(int, input().split() ) )
     print( '#{} {}'.format( ts, views(build, datas) ) )
-            
