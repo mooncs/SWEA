@@ -32,11 +32,57 @@ N 과 M은 3 이상 20 이하이다.
 #1 30
 #2 63
 '''
-T = int(input())
-for test in range(T):
-    first_line = list(map(int, input().split()))
-    second_line = list(map(int, input().split()))
-    end = len(first_line)
+# # 1
+# T = int(input())
+# # 입력한 테스트 케이스만큼 실행
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split())
+#     first = list(map(int, input().split()))
+#     second = list(map(int, input().split()))
 
-print(first_line)
-print(second_line)
+#     # M이 클 때를 가정하여 코드 작성하였기 때문에, N이 크다면 변수들을 swap
+#     if N > M:
+#         N, M = M, N
+#         first, second = second, first
+#     # 횟수를 카운트할 변수 i 설정
+#     i = 0
+#     # 제일 큰 곱의 합을 담을 변수 multi설정
+#     multi = 0
+#     # 두 숫자열의 길이의 차만큼 실행
+#     while i <= M-N:
+#         # 작은 리스트의 길이만큼 긴 리스트의 요소로 이루어진 새로운 리스트 생성
+#         new_second = [second[i+idx] for idx in range(N)]
+#         # 곱의 합을 담을 변수 hap 설정
+#         hap = 0
+#         # 두 수의 곱을 hap에 더하고
+#         for idx in range(N):
+#             hap += first[idx] * new_second[idx]
+#         # 최종적인 hap이 multi보다 크다면, 제일 큰 곱의 합 갱신
+#         if hap > multi:
+#             multi = hap
+#         # 횟수 1 증가
+#         i += 1
+
+#     print('#{} {}'.format(tc, multi))
+
+# 2
+T = int(input())
+ 
+for tc in range(1, T+1):
+    N, M = map(int, input().split())
+    first = list(map(int, input().split()))
+    second = list(map(int, input().split()))
+    if N > M:
+        first, second = second, first
+        N, M = M, N
+    
+    # float('-inf')는 음의 무한대, float('inf')는 양의 무한대
+    max_sum = float('-inf')
+    for i in range(M-N + 1):
+        result = 0
+        for j in range(N):
+            result += first[j] * second[i + j]
+        if result > max_sum:
+            max_sum = result
+ 
+    print(f'#{tc} {max_sum}')
