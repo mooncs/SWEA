@@ -48,7 +48,7 @@ T = int(input())
 for test in range(T):
     snail = int(input())
     snail_num = [[0]*snail for i in range(snail)]
-
+    
     row = 0
     col = 0
     direction = "down"
