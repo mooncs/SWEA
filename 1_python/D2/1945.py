@@ -42,20 +42,20 @@ N은 2 이상 10,000,000 이하이다.
 #9 0 0 2 0 0
 #10 1 3 3 2 0
 '''
-# 1
-T = int(input())
-numbers = [2, 3, 5, 7, 11]
-for test in range(T):
-    N = int(input())
-    result = ''
-    for number in numbers:   
-        cnt = 0
-        while N % number == 0:
-            cnt += 1
-            N //= number    
-        result += str(cnt) + ' '
+# # 1
+# T = int(input())
+# numbers = [2, 3, 5, 7, 11]
+# for test in range(T):
+#     N = int(input())
+#     result = ''
+#     for number in numbers:   
+#         cnt = 0
+#         while N % number == 0:
+#             cnt += 1
+#             N //= number    
+#         result += str(cnt) + ' '
     
-    print(f'#{test+1} {result[:-1]}')
+#     print(f'#{test+1} {result[:-1]}')
 
 # # 2
 # T = int(input())
@@ -70,3 +70,23 @@ for test in range(T):
 #             N //= numbers[i]
 #         result[i] = cnt
 #     print("#{} {}".format(test+1, " ".join(map(str, result))))
+
+# 3
+T = int(input())
+for tc in range(1, T+1):
+    # 밑들을 리스트에 담는다.
+    number = [2, 3, 5, 7, 11]
+    numbers = int(input())
+    # 최종결과를 담을 문자열, ans
+    ans = ''
+    # 나눌 수를 하나씩 꺼낸다.
+    for num in number:
+        # 몇 번 나눴는질 셀 변수, cnt
+        cnt = 0
+        # 나눠 떨어진다면 계속해서 수행
+        while numbers%num == 0:
+            cnt += 1
+            numbers = numbers//num
+        ans += str(cnt)+' '
+
+    print('#{} {}'.format(tc, ans[:-1]))
