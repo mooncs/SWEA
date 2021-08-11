@@ -31,3 +31,16 @@ for tc in range(1, T+1):
         ans += str(box)+' '
     # 마지막 공백을 제외하고 출력하기 위해 ans[:-1] 출력
     print('#{} {}'.format(tc, ans[:-1]))
+
+
+# 2
+t = int(input())
+for tc in range(t):
+    n, q = map(int, input().split())
+    box = [0] * n
+    for i in range(q):
+        l, r = map(int, input().split())
+        for j in range(l-1, r):
+            box[j] = i+1
+ 
+    print('#{} '.format(tc+1) + ' '.join(map(str, box)))

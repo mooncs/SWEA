@@ -37,24 +37,46 @@ v 1 2 '3 4 5'
 #2 11088
 #3 1090
 '''
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split())
+#     numbers = list(map(int, input().split()))
+#     # M개의 합이 가장 큰 경우와 가장 작은 경우를 담을 변수 min_sum, max_sum정의
+#     min_sum = 1000000
+#     max_sum = 0
+#     for i in range(N-M+1):
+#         # M개의 합을 sum에 담고
+#         sum = 0
+#         for j in range(M):
+#             sum += numbers[i+j]
+#         # max_sum보다 크다면 max_sum 갱신
+#         if sum > max_sum:
+#             max_sum = sum
+#         # max_sum보다 작다면 max_sum 갱신
+#         if sum < min_sum:
+#             min_sum = sum
+    
+#     print('#{} {}'.format(tc, max_sum-min_sum))
+
+
 T = int(input())
 for tc in range(1, T+1):
     N, M = map(int, input().split())
     numbers = list(map(int, input().split()))
-    # M개의 합이 가장 큰 경우와 가장 작은 경우를 담을 변수 min_sum, max_sum정의
-    min_sum = 1000000
-    max_sum = 0
-    for i in range(N-M+1):
-        # M개의 합을 sum에 담고
-        sum = 0
-        for j in range(M):
-            sum += numbers[i+j]
-        # max_sum보다 크다면 max_sum 갱신
-        if sum > max_sum:
-            max_sum = sum
-        # max_sum보다 작다면 max_sum 갱신
-        if sum < min_sum:
-            min_sum = sum
-    
+
+    base = 0
+    for i in range(M):
+        base += numbers[i]
+    min_sum = max_sum = base
+
+    for i in range(M, N):
+        base = base + numbers[i] - numbers[i-M]
+
+        if base < min_sum:
+            min_sum = base
+        if base > max_sum:
+            max_sum = base
+
+
     print('#{} {}'.format(tc, max_sum-min_sum))
 

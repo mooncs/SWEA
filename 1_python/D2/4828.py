@@ -31,12 +31,27 @@ def find_max(numbers):
         if numbers[n] > numbers[n+1]:
             numbers[n], numbers[n+1] = numbers[n+1], numbers[n]
     return numbers[-1]
+
+def find_max2(numbers):
+    max_num = numbers[1]
+    for number in numbers:
+        if number > max_num:
+            max_num = number
+    return max_num
+
 # 최소값 찾는 함수
 def find_min(numbers):
     for n in range(len(numbers)-1, 0, -1):
         if numbers[n] < numbers[n-1]:
             numbers[n-1], numbers[n] = numbers[n], numbers[n-1]
     return numbers[0]
+
+def find_min2(numbers):
+    min_num = numbers[1]
+    for number in numbers:
+        if number < min_num:
+            min_num = number
+    return min_num
 
 T = int(input())
 for tc in range(1, T+1):

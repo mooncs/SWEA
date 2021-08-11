@@ -30,6 +30,7 @@ T = int(input())
 for tc in range(1, T+1):
     N = int(input())
     numbers = list(map(int, input()))
+    print(numbers)
     # 0~9까지 몇번씩 들어왔는지 카운트
     counts = [0]*10
     for n in numbers:

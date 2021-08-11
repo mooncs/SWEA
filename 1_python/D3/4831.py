@@ -32,35 +32,60 @@ A도시는 전기버스를 운행하려고 한다. 전기버스는 한번 충전
 #2 0
 #3 4
 '''
+# T = int(input())
+# for line in range(1, T+1):
+#     # K : 최대 이동 가능 수, N : 종점, M : 충전기 설치 정류장 수
+#     K, N, M = map(int, input().split())
+#     # charging : 충전기 설치 정류장 위치
+#     charging = list(map(int, input().split()))
+#     charging.append(N)
+
+#     # 충전 횟수
+#     charge = 0
+#     # 이동 가능 수
+#     move = K
+#     # 현재 위치
+#     loca = 0
+#     for m in range(M):
+#         # 충전기 설치 정류장 도달시 이동 가능 수
+#         move -= charging[m]-loca
+#         # 이동 가능 수를 넘어서 이동한 경우
+#         if move < 0:
+#             charge = 0
+#             break
+#         # 현 위치 갱신
+#         loca = charging[m]
+
+#         # if loca >= N:
+#         #     break
+
+#         # 남은 이동 가능 수로 다음 충전기 설치 정류장까지 갈 수 있는지 판단
+#         # 갈 수 없다면, 충전 회수 추가, 이동 가능 수 최신화
+#         if move < charging[m+1]-loca:
+#             charge += 1
+#             move = K
+
+
+#     print('#{} {}'.format(line, charge))
+
+
+# 2
+# 버스의 현 위치를 신경쓰지 않고,
+def bus(KNM, M, cnt=0):
+    if KNM[1] <= KNM[0]:
+        return cnt
+    for i in range(KNM[0], 0, -1):
+        if i in M:
+            KNM[1] -= i
+            for j in range(len(M)):
+                M[j] -= i
+            cnt += 1
+            return bus(KNM, M, cnt)
+    return 0        # 도중에 퍼지면
+ 
+ 
 T = int(input())
-for line in range(1, T+1):
-    # K : 최대 이동 가능 수, N : 종점, M : 충전기 설치 정류장 수
-    K, N, M = map(int, input().split())
-    # charging : 충전기 설치 정류장 위치
-    charging = list(map(int, input().split()))
-    charging.append(N)
-
-    # 충전 횟수
-    charge = 0
-    # 이동 가능 수
-    move = K
-    # 현재 위치
-    loca = 0
-    for m in range(M):
-        # 충전기 설치 정류장 도달시 이동 가능 수
-        move -= charging[m]-loca
-        # 이동 가능 수를 넘어서 이동한 경우
-        if move < 0:
-            charge = 0
-            break
-        # 현 위치 갱신
-        loca = charging[m]
-
-        # 남은 이동 가능 수로 다음 충전기 설치 정류장까지 갈 수 있는지 판단
-        # 갈 수 없다면, 충전 회수 추가, 이동 가능 수 최신화
-        if move < charging[m+1]-loca:
-            charge += 1
-            move = K
-
-
-    print('#{} {}'.format(line, charge))
+for tc in range(1, T+1):
+    KNM = list(map(int, input().strip().split()))
+    M = list(map(int, input().strip().split()))
+    print("#{} {}".format(tc, bus(KNM, M)))
