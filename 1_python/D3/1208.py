@@ -28,6 +28,10 @@ for tc in range(1, 11):
         if heights[min_box] == 0:
             min_box += 1
 
+        # # 평탄화가 완료되었다면 반복문 종료
+        # if max_box-min_box <= 1:
+        #     break
+
         dump -= 1
 
     print('#{} {}'.format(tc, max_box-min_box))
