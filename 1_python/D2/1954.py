@@ -45,58 +45,90 @@ N이 4일 경우,
 10 9 8 7
 '''
 T = int(input())
-for tc in range(T):
+for tc in range(1, T+1):
     snail = int(input())
-    snail_num = [[0]*snail for i in range(snail)]
-    
-    row = 0
-    col = 0
-    direction = "down"
-
-    for i in range(snail):
-        snail_num[row][col] = i+1
-        col += 1
-    number = snail
-    col -= 1
-    # print(snail_num)
-    move = snail-1
-
-    while 0 < move:
-        
-        if direction=="down":
-            for i in range(move):
-                row += 1
-                snail_num[row][col] = number+1
-                number += 1
-            direction="left"
-            # print(snail_num)
-        
-        elif direction=="left":
-            for i in range(move):
-                col -= 1
-                snail_num[row][col] = number+1
-                number += 1
-            direction="up"
-            move -= 1
-            # print(snail_num)
-        
-        elif direction=="up":
-            for i in range(move):
-                row -= 1
-                snail_num[row][col] = number+1
-                number += 1
-            direction="right"
-            # print(snail_num)
-
+    snail_num = [[0]*snail for _ in range(snail)]
+    # 방향, 우하좌상
+    dr = [0, 1, 0, -1]
+    dc = [1, 0, -1, 0]
+    # 입력할 수
+    cnt = 1
+    # 현 위치
+    r, c = 0, -1
+    # 방향지시
+    d = 0   
+    while cnt <= snail**2:
+        # 현 위치에서 방향에 맞게 이동한 위치
+        mr, mc = r+dr[d], c+dc[d]
+        if 0<=mr<snail and 0<=mc<snail and snail_num[mr][mc]==0:
+            snail_num[mr][mc] = cnt
+            cnt += 1
+            # 현 위치 갱신
+            r, c = mr, mc
         else:
-            for i in range(move):
-                col += 1
-                snail_num[row][col] = number+1
-                number += 1
-            direction="down"
-            move -= 1
-            # print(snail_num)
+            # 범위를 넘어가거나, 이미 수가 입력되어 있으면 방향 변경
+            d = (d+1)%4
 
-    print(f'#{tc+1}')
+    print(f'#{tc}')
     for num in snail_num:
         print(" ".join(map(str, num)), end='\n')
+
+
+
+
+# T = int(input())
+# for tc in range(T):
+#     snail = int(input())
+#     snail_num = [[0]*snail for i in range(snail)]
+    
+#     row = 0
+#     col = 0
+#     direction = "down"
+
+#     for i in range(snail):
+#         snail_num[row][col] = i+1
+#         col += 1
+#     number = snail
+#     col -= 1
+#     # print(snail_num)
+#     move = snail-1
+
+#     while 0 < move:
+        
+#         if direction=="down":
+#             for i in range(move):
+#                 row += 1
+#                 snail_num[row][col] = number+1
+#                 number += 1
+#             direction="left"
+#             # print(snail_num)
+        
+#         elif direction=="left":
+#             for i in range(move):
+#                 col -= 1
+#                 snail_num[row][col] = number+1
+#                 number += 1
+#             direction="up"
+#             move -= 1
+#             # print(snail_num)
+        
+#         elif direction=="up":
+#             for i in range(move):
+#                 row -= 1
+#                 snail_num[row][col] = number+1
+#                 number += 1
+#             direction="right"
+#             # print(snail_num)
+
+#         else:
+#             for i in range(move):
+#                 col += 1
+#                 snail_num[row][col] = number+1
+#                 number += 1
+#             direction="down"
+#             move -= 1
+#             # print(snail_num)
+
+#     print(f'#{tc+1}')
+#     for num in snail_num:
+#         print(" ".join(map(str, num)), end='\n')
