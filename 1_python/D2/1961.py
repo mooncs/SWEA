@@ -86,7 +86,7 @@ N은 3 이상 7 이하이다.
 # 회전 함수 선언
 def rotate(origin):
     N = len(origin)
-    rotated = [[0 for _ in range(N)] for _ in range(N)]
+    rotated = [[0]*N for _ in range(N)]
     for y in range(N):
         for x in range(N):
             rotated[x][y] = origin[N-1-y][x]
@@ -99,39 +99,39 @@ for tc in range(1, T+1):
     # NxN 행렬의 N 입력
     N = int(input())
     # 처음 행렬을 담을 변수 선언
-    basic = []
-    for _ in range(N):
-        basic.append(list(map(int,input().split(" "))))
+    basic = [list(map(int,input().split(" "))) for _ in range(N)]
 
     # 90도 회전 
-    r2=rotate(basic)
+    r90=rotate(basic)
     # 180도 회전
-    r3=rotate(r2)
+    r180=rotate(r90)
     # 270도 회전
-    r4=rotate(r3)
+    r270=rotate(r180)
 
     # 출력 시작
     print('#{}'.format(tc))
     for i in range(N):
         # unpacking 활용
-        print(*r2[i], sep = '', end=' ')
-        print(*r3[i], sep = '', end=' ')
-        print(*r4[i], sep = '', end=' ')
+        print(*r90[i], sep = '', end=' ')
+        print(*r180[i], sep = '', end=' ')
+        print(*r270[i], sep = '', end=' ')
         print()
 
 
-# # 3 아직 이해 불가...
+# # 3 zip활용
 # T = int(input())
  
-# for tc in range(T):
-#     res = list()
-#     arr = [list(input().split()) for _ in range(int(input()))]
-#     res.append([''.join(reversed(i)) for i in zip(*arr)])
-#     res.append([''.join(reversed(i)) for i in reversed(arr)])
-#     res.append([''.join(i) for i in reversed(list(zip(*arr)))])
-#     res = list(zip(*res))
-#     print(f'#{tc+1}')
-#     for i in res:
+# for tc in range(1, T+1):
+#     answer = []
+#     basic = [list(input().split()) for _ in range(int(input()))]
+#     answer.append([''.join(reversed(i)) for i in zip(*basic)])
+#     answer.append([''.join(reversed(i)) for i in reversed(basic)])
+#     answer.append([''.join(i) for i in reversed(list(zip(*basic)))])
+#     # print(answer)   # [['741', '852', '963'], ['987', '654', '321'], ['369', '258', '147']] 
+#     answer = list(zip(*answer))
+#     # print(answer)   # [('741', '987', '369'), ('852', '654', '258'), ('963', '321', '147')]
+#     print('#{}'.format(tc))
+#     for i in answer:
 #         for j in i:
 #             print(j, end = ' ')
 #         print()
