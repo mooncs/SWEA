@@ -23,6 +23,7 @@ def bracket():
         return 0
     # 모든 것이 문제가 없다면, return 1
     return 1
+    
 T = int(input())
 for tc in range(1, T+1):
     data = input()
