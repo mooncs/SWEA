@@ -7,7 +7,7 @@ for tc in range(1, T+1):
     cnt = 0     # 단어 길이와 빈칸의 수가 동일한 것 카운트
     row = 0     # 행에서 1의 개수 카운트
     col = 0     # 열에서 1의 개수 카운트
-    # tp로 방향 체크
+    # 세로 방향 체크
     for i in range(N):
         for j in range(N):
             # 가로로 검색
